@@ -27,75 +27,93 @@
 
 ## Atividade 1 — Primeira captura (`http://example.com`)
 
-**Captura de tela:** `evidencias/atv1_sessao.png`
+<img width="886" height="468" alt="image" src="https://github.com/user-attachments/assets/c265f040-c85c-4b7c-80c7-4f1f1d3471af" />
+
 
 **Request-line enviada:**
 
 ```http
-[colar aqui a linha inicial do request, ex: GET / HTTP/1.1]
+[GET http://wholefunbeautifulmelody.neverssl.com/online/ HTTP/1.1]
 ```
 
 **Status-line recebida:**
 
 ```http
-[colar aqui, ex: HTTP/1.1 200 OK]
+[HTTP/1.1 200 OK]
 ```
 
 ### Pergunta 1.1
 > Quantos cabeçalhos o navegador enviou no request? Liste-os.
 
 **Resposta:**
-[número total]
+[7]
 
 Cabeçalhos:
-- [cabeçalho 1]
-- [cabeçalho 2]
-- ...
+- [Host:]
+- [Connection:]
+- [Upgrade-Insecure-Requests:]
+- [User-Agent:]
+- [Accept:]
+- [Accept-Encoding:]
+- [Accept-Language:]
 
 ### Pergunta 1.2
 > Qual foi o `Content-Length` da resposta? Se ele não apareceu, registre `Transfer-Encoding`, versão do protocolo ou outro indício observado. O corpo retornado é HTML, texto puro, JSON ou binário? Como você descobriu?
 
-**Resposta:** [...]
+**Resposta:** [Content-Length: 1173. Content-Type: text/html; O Corpo retornado é Html]
 
 ---
 
 ## Atividade 2 — Anatomia de um GET (`http://httpbin.org/get?...`)
 
-**Captura de tela:** `evidencias/atv2_raw.png`
+<img width="886" height="497" alt="image" src="https://github.com/user-attachments/assets/26fcc229-cad4-4c69-960c-365df6e493a7" />
+
 
 **Request-line completa:**
 
 ```http
-[colar aqui]
+[GET http://httpbin.org/get?aluno=ANTHONY_ABEDALA&curso=redes HTTP/1.1]
 ```
 
 **Cabeçalhos-chave capturados:**
 
 | Cabeçalho    | Valor                    |
 |--------------|--------------------------|
-| `Host`       | [...]                    |
-| `User-Agent` | [...]                    |
-| `Accept`     | [...]                    |
+| `Host`       | [httpbin.org]                    |
+| `User-Agent` | [Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36]                    |
+| `Accept`     | [text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7]                    |
 
 **Campos do JSON de resposta:**
 
 ```json
 {
-  "args":    [colar valor],
-  "headers": [colar valor resumido],
-  "origin":  [colar valor]
+  "args": {
+    "aluno": "ANTHONY_ABEDALA", 
+    "curso": "redes"
+  }, 
+  "headers": {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7", 
+    "Host": "httpbin.org", 
+    "Upgrade-Insecure-Requests": "1", 
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", 
+    "X-Amzn-Trace-Id": "Root=1-69ff3847-30f396a37a442b57537bfaae"
+  }, 
+  "origin": "187.58.19.47", 
+  "url": "http://httpbin.org/get?aluno=ANTHONY_ABEDALA&curso=redes"
 }
 ```
 
 ### Pergunta 2.1
 > O valor do campo `origin` corresponde a qual elemento da rede? Por que normalmente não é o IP local?
 
-**Resposta:** [...]
+**Resposta:** [Corresponde ao IP. Porque é trafego passa pelo roteador]
 
 ### Pergunta 2.2
 > Compare o `User-Agent` enviado com o que aparece no JSON da resposta. Coincidem?
 
-**Resposta:** [...]
+**Resposta:** [Sim. O agent user enviado pelo navegador coincide com valor retornado pelo servidor no JSON]
 
 ### Pergunta 2.3
 > Em `http://httpbin.org/headers`, liste até três cabeçalhos que o servidor vê mas **não aparecem** no Raw do request. De onde vêm? Se não encontrar três, explique por que o resultado pode variar.
@@ -104,63 +122,103 @@ Cabeçalhos:
 
 | Cabeçalho visto pelo servidor | Origem provável | Observação |
 |-------------------------------|-----------------|------------|
-| [...]                         | [...]           | [...]      |
-| [...]                         | [...]           | [...]      |
-| [...]                         | [...]           | [...]      |
+| [Host]                        | [Servidor]      | [...]      |
+| [Upgrade-Insecure-Requests]   | [Servidor]      | [...]      |
+| [User-Agent]                  | [Servidor]      | [...]      |
 
 ---
 
 ## Atividade 3 — POST e envio de formulário (`http://httpbin.org/forms/post` → `/post`)
 
-**Captura de tela:** `evidencias/atv3_post_raw.png`
+<img width="886" height="643" alt="image" src="https://github.com/user-attachments/assets/18a5a21d-a55e-4a09-a0e2-700d8779c199" />
+
 
 **Request-line do POST:**
 
 ```http
-[colar aqui]
+[POST http://httpbin.org/post HTTP/1.1]
 ```
 
 **Cabeçalhos do request:**
 
 | Cabeçalho        | Valor |
 |------------------|-------|
-| `Content-Type`   | [...] |
-| `Content-Length` | [...] |
+| `Content-Type`   | [application/json] |
+| `Content-Length` | [1170] |
 
 **Corpo completo do request:**
 
 ```
-[colar aqui o body enviado]
+[custname=Cleber&custtel=11+40028922&custemail=yudi%40play2.com&size=large&topping=bacon&topping=cheese&topping=onion&topping=mushroom&delivery=11%3A00&comments=Quebre+a+porta]
 ```
 
 **Trecho do JSON de resposta (campo `form`):**
 
 ```json
 "form": {
-  [colar aqui]
-}
+    "comments": "Quebre a porta", 
+    "custemail": "yudi@play2.com", 
+    "custname": "Cleber", 
+    "custtel": "11 40028922", 
+    "delivery": "11:00", 
+    "size": "large", 
+    "topping": [
+      "bacon", 
+      "cheese", 
+      "onion", 
+      "mushroom"
+    ]
+  }, 
+  "headers": {
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7", 
+    "Cache-Control": "max-age=0", 
+    "Content-Length": "174", 
+    "Content-Type": "application/x-www-form-urlencoded", 
+    "Host": "httpbin.org", 
+    "Origin": "http://httpbin.org", 
+    "Referer": "http://httpbin.org/forms/post", 
+    "Upgrade-Insecure-Requests": "1", 
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36", 
+    "X-Amzn-Trace-Id": "Root=1-69ff3aee-0588a12b12fea29a619a52de"
+  }
 ```
 
 ### Pergunta 3.1
 > Qual o formato do corpo? Como esse formato codifica caracteres especiais (espaço, acentos)?
 
-**Resposta:** [...]
+**Resposta:** [application/x-www-form-urlencoded. Espaços sao codificados como '+' ou '%20' e caracteres especiais sao codificados em URL enconding]
 
 ### Pergunta 3.2
 > Comparando **Request → WebForms** e **Request → Raw**: qual das duas corresponde literalmente aos bytes enviados no socket TCP?
 
-**Resposta:** [...]
+**Resposta:** [Aba raw corresponde literalmente aos bytes enviados pelo socket TCP]
 
 ### Pergunta 3.3 — Composer
 > Envie manualmente via Composer um `POST` para `http://httpbin.org/post` com JSON. Registre a resposta. Qual campo do JSON confirma que o servidor interpretou o JSON?
 
-**Captura de tela:** `evidencias/atv3_composer.png`
+<img width="469" height="358" alt="image" src="https://github.com/user-attachments/assets/2a68d73d-b9d9-4f50-91a5-9f09ecc97b62" />
+
 
 **Response JSON (trecho relevante):**
 
 ```json
 {
-  [colar aqui]
+  "args": {}, 
+  "data": "", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Content-Length": "0", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+    "User-Agent": "Fiddler", 
+    "X-Amzn-Trace-Id": "Root=1-69ff3d81-377d6c9604269e552bb69073"
+  }, 
+  "json": null, 
+  "origin": "187.58.19.47", 
+  "url": "http://httpbin.org/post
 }
 ```
 
@@ -170,32 +228,33 @@ Cabeçalhos:
 
 ## Atividade 4 — Catálogo de status codes (`http://httpbin.org/...`)
 
-**Captura de tela (lista do Fiddler com as 7 sessões):** `evidencias/atv4_lista.png`
+<img width="381" height="511" alt="image" src="https://github.com/user-attachments/assets/6d4affcc-eb07-4e1e-94f3-94af102298ad" />
+
 
 | # | Método | URL | Status-line | `Content-Length` / `Transfer-Encoding` | Body presente? |
 |---|--------|-----|-------------|-----------------------------------------|----------------|
-| 1 | GET    | `http://httpbin.org/status/200` | [...] | [...] | [sim/não] |
-| 2 | GET    | `http://httpbin.org/redirect-to?status_code=301&url=/get` | [...] | [...] | [sim/não] |
-| 3 | GET    | `http://httpbin.org/status/404` | [...] | [...] | [sim/não] |
-| 4 | GET    | `http://httpbin.org/status/418` | [...] | [...] | [sim/não] |
-| 5 | GET    | `http://httpbin.org/status/500` | [...] | [...] | [sim/não] |
-| 6 | GET    | `http://httpbin.org/status/503` | [...] | [...] | [sim/não] |
-| 7 | GET    | `http://httpbin.org/cache` com `If-Modified-Since` | [...] | [...] | [sim/não] |
+| 1 | GET    | `http://httpbin.org/status/200` | [HTTP/1.1 200 OK] | [0] | [não] |
+| 2 | GET    | `http://httpbin.org/redirect-to?status_code=301&url=/get` | [HTTP/1.1 301 MOVED PERMANENTLY] | [0] | [não] |
+| 3 | GET    | `http://httpbin.org/status/404` | [HTTP/1.1 404] | [7150] | [sim] |
+| 4 | GET    | `http://httpbin.org/status/418` | [HTTP/1.1 418 I'M A TEAPOT] | [135] | [sim] |
+| 5 | GET    | `http://httpbin.org/status/500` | [HTTP/1.1 500 INTERNAL SERVER ERROR] | [0] | [não] |
+| 6 | GET    | `http://httpbin.org/status/503` | [HTTP/1.1 503 SERVICE UNAVAILABLE] | [0] | [não] |
+| 7 | GET    | `http://httpbin.org/cache` com `If-Modified-Since` | [Gzip.] | [630] | [não] |
 
 ### Pergunta 4.1
 > Em qual dos status o corpo está ausente/tamanho zero? Isso é obrigatório pela especificação ou depende do servidor?
 
-**Resposta:** [...]
+**Resposta:** [200, 301, 500, 503 e 304. depende do servidor]
 
 ### Pergunta 4.2
 > No `301`, qual cabeçalho da resposta informa para onde ir? O que aconteceria se estivesse ausente?
 
-**Resposta:** [...]
+**Resposta:** [o cabeçalho informa o destino do redirecionamento sem ele o navegador nao saberia para onde redirecionar o user]
 
 ### Pergunta 4.3
 > Diferença semântica entre `200`, `304` e `404` do ponto de vista do cache do navegador.
 
-**Resposta:** [...]
+**Resposta:** [O tipo de erro]
 
 ---
 
