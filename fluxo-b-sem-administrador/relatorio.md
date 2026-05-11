@@ -12,16 +12,16 @@
 
 | Campo       | Valor                  |
 |-------------|------------------------|
-| Nome        | [seu nome completo]    |
+| Nome        | [Anthony Abedala]    |
 | RA          | [seu RA]               |
 | Disciplina  | Redes de Computadores  |
-| Turma       | [sua turma]            |
-| Data        | [data da realização]   |
+| Turma       | [Manhã]            |
+| Data        | [09/05/2026]   |
 | Fluxo       | **B — Aluno sem privilégio de administrador** |
-| SO utilizado | [Windows 11 / Ubuntu 22.04 / macOS ...] |
-| Ferramenta de proxy | [Fiddler Classic per-user / mitmproxy / HTTP Toolkit / ...] |
+| SO utilizado | [Windows 11] |
+| Ferramenta de proxy | [Fiddler Classic per-user] |
 | Navegador(es)       | [Chrome 124 / Firefox 125 / ...] |
-| HTTPS-First Mode / HTTPS-Only desabilitado? | [sim / não] |
+| HTTPS-First Mode / HTTPS-Only desabilitado? | [sim] |
 
 ---
 
